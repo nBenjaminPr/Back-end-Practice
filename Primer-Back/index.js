@@ -1,0 +1,1 @@
+console.log("La suma de 2 mas 2 es " + (2+2));
