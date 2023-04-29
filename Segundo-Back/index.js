@@ -1,10 +1,7 @@
 const express = require("express")
-
 const app = express();
 
-app.get("/users", (req, res)=>{
-    res.status(200).send("Usuarios")
-})
+app.use("/users", usersRoutes)
 
 app.get("/product", (req, res)=>{
     res.status(200).send("Productos")
