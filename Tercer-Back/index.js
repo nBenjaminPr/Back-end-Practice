@@ -1,6 +1,9 @@
 const express = require ("express")
 const app = express();
 
+//req: Es el objeto que viene desde el front
+//res: La respuesta que le damos al front
+
 app.get("/product", (req, res)=>{
     res.status(200).send("Productos")
 })
