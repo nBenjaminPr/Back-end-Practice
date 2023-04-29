@@ -9,6 +9,16 @@ app.get("/users",(req, res) => {
         name:"Nico"}, {name: "Loco"}, {name: "kales"}]})
 })
 
+app.get("/users",(req, res) => {
+    res.status(200).json({users: [{
+        name:"Nico"}, {name: "Loco"}, {name: "kales"}]})
+})
+
+app.get("/users",(req, res) => {
+    res.status(200).json({users: [{
+        name:"Nico"}, {name: "Loco"}, {name: "kales"}]})
+})
+
 app.get("/*",(req, res) => {
     res.status(404).json({message: "hola error 404"})
 })
