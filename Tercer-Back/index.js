@@ -17,16 +17,9 @@ app.use ("/phones", phonesRoutes)
 
 app.use ("/products", productsRoutes)
 
-
-
-
 app.get("*", (req, res)=>{
 res.status(404).json({message: "Error sin usuarios"})
 })
-
-
-
-
 
 app.listen(4000, () => {
     console.log("Server listening on port 4000...");

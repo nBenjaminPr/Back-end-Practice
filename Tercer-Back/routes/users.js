@@ -1,18 +1,16 @@
-const { Router } = require("express")
+const { Router } = require("express");
+const { getUsers, getUsersArgentina, editUsers, addUsers, deleteUsers } = require("../controllers/users");
 const router = Router();
 
 
-router.get("/", (req, res)=>{
-    res.status(200).json({message: "Todos los usuarios"})
-})
-router.put("/", (req, res)=>{
-    res.status(200).json({message: "Se ha editado un user"})
-})
-router.delete("/", (req, res)=>{
-    res.status(200).json({message: "Se ha borrado una users"})
-})
-router.post("/", (req, res)=>{
-    res.status(200).json({message: "Se ha creado un usuarios"})
-})
+router.get("/", getUsers)
+
+router.get("/argentina",getUsersArgentina)
+
+router.put("/",editUsers)
+
+router.delete("/",deleteUsers)
+
+router.post("/",addUsers)
 
 module.exports = router;
