@@ -3,8 +3,11 @@ const usersRoutes = require ("./routes/users")
 const countriesRoutes = require ("./routes/countries")
 const phonesRoutes = require ("./routes/phones")
 const productsRoutes = require ("./routes/products")
-
 const app = express();
+const morgan = require ("morgan")
+
+app.use (express.json())
+app.use(morgan("dev"))
 
 //req: Es el objeto que viene desde el front
 //res: La respuesta que le damos al front
