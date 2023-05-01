@@ -1,5 +1,5 @@
 const verifyRole = (req,res,next) =>{
-    const admin = false;
+    const admin = true;
     // 403: son errores
     if(admin){
         next();
