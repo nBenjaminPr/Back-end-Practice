@@ -1,9 +1,4 @@
-class customError extends Error{
-    constructor(message, code){
-        super(message);
-        this.code=code
-}
-}
+const customError = require("../utils/customError");
 
 
 const getProducts = (req, res)=>{
