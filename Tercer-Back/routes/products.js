@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/:id?",getProducts)
 
-router.post("/"), addProducts
+router.post("/", addProducts)
 
 
 
