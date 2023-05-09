@@ -37,4 +37,4 @@ const UseSchema = new Schema({
     hobbies:Array
 })
 
-module.exports = model("User", UserSchema);
+module.exports = model("User", UseSchema);
