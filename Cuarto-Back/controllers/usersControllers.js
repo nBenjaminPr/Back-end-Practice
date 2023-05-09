@@ -26,7 +26,7 @@ const addUser = async (req,res) => {
 
         res.status(201).json({message: "El usuario se creo correctamente", user})
     } catch (error) {
-        res.status(error.code || 500).json({message:error.message})
+        res.status(error.code<600? error.code : 500).json({message:error.message})
     }
 }
 

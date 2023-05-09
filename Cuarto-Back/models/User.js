@@ -13,7 +13,7 @@ const UseSchema = new Schema({
         unique: [true, "Email ya registrado"],
         trim: true,
     },
-    lastame:{
+    lastname:{
         type:String,
         lowercase: true,
         minLength:[3, "Debe tener mas de 3 carecteres"],

@@ -1,12 +1,14 @@
 const express = require ("express");
+const connectDB = require("./db/db");
 const app = express();
 require("dotenv").config()
 const usersRoutes = require("./routes/usersRoutes");
-const connectDB = require("./db/db");
 
 connectDB();
 const PORT = process.env.PORT
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.use("/users", usersRoutes) 
 
