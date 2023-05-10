@@ -35,6 +35,9 @@ const UseSchema = new Schema({
         default:false
     },
     hobbies:Array
+},{
+    versionKey: false,
+    timestamps: true
 })
 
 module.exports = model("User", UseSchema);
