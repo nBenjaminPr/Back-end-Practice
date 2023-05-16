@@ -4,20 +4,21 @@ const customError = require("../utils/custom");
 const getUsers = async (req, res) => {
     //TRAEMOS LOS USUARIOS DE LA DB
 
-    //TRAER MUCHOS RESUTLADOS
+
+    //TRAR POR SU ID User.find(ID)
     try {
-        const {id} = req.params;
-        if(id) {
-            const user = await User.findById(id)
+        if(req.params.email) {
+            const user = await User.findByOne({email: req.params.email})
             res.status(200).json({user})
         }else{
             const users = await User.find()
             res.status(200).json({users})
         }
 
+    //TRAER MUCHOS RESUTLADOS
         // const users = await User.find();
     //TRAE UN RESULTADO
-    //TRAR POR SU ID User.find(ID)
+
     //TRAE SEGUN LA CONDICION User.find({})
     } catch (error) {
         res.status(error.code || 500).json({message:error.message})
