@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
     try {
         const {gender,plus18} = req.query
         if(req.params.email) {
-            const user = await User.findByOne({email: req.params.email})
+            const user = await User.findOne({email: req.params.email})
             res.status(200).json({user})
         }else{ //Filtrando segun un CAMPO
             let users
@@ -62,8 +62,21 @@ const addUser = async (req,res) => {
     }
 }
 
+const deleteUser = async (req,res) => {
+    try {
+        const {id} = req.body;
+        const userDelete = await User.findByIdAndDelete(id)
+        if(!userDelete) throw new customError("No existe usuario borrado")
+        res.status(200).json({message: "usuario borrado" })
+    } catch (error) {
+        res.status(error.code<600? error.code : 500).json({message:error.message})
+    }
+}
+
+
 module.exports = {
     getUsers,
     addUser,
-    getOlderMen
+    getOlderMen,
+    deleteUser
 }
