@@ -23,7 +23,7 @@ const getUsers = async (req, res) => {
                 //lt Menor que
                 //equal
             }else{
-
+                users = await User.find()
             }
             res.status(200).json({users})
         }
@@ -37,6 +37,15 @@ const getUsers = async (req, res) => {
         res.status(error.code || 500).json({message:error.message})
     }
 
+}
+
+const getOlderMen = async(req,res) => {
+    try {
+        const olderMan = await User.find({$and: [{gender: "M"}, {age: {$gte: 18}}]})
+        res.status(200).json({olderMan})
+    } catch (error) {
+        res.status(error.code || 500).json({message:error.message})
+    }
 }
 
 //Toda comunicion con la base de datos es ASYNC Y DONDE SE VA A DEMORAR AGREGAR UN AWAIT 
@@ -55,5 +64,6 @@ const addUser = async (req,res) => {
 
 module.exports = {
     getUsers,
-    addUser
+    addUser,
+    getOlderMen
 }
