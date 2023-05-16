@@ -7,11 +7,24 @@ const getUsers = async (req, res) => {
 
     //TRAR POR SU ID User.find(ID)
     try {
+        const {gender,plus18} = req.query
         if(req.params.email) {
             const user = await User.findByOne({email: req.params.email})
             res.status(200).json({user})
-        }else{
-            const users = await User.find()
+        }else{ //Filtrando segun un CAMPO
+            let users
+            if(gender){
+                users = await User.findOne({gender: gender})
+            }else if(plus18){
+                users = await User.find({age: {$gte:18}})
+                //gte mayor que o igual que
+                //lte menor que o igual que
+                //gt Mayor que
+                //lt Menor que
+                //equal
+            }else{
+
+            }
             res.status(200).json({users})
         }
 

@@ -3,7 +3,7 @@ const { getUsers, addUser } = require("../controllers/usersControllers");
 
 const router = Router();
 
-router.get("/", getUsers)
+router.get("/:email?", getUsers)
 router.post("/", addUser)
 
 module.exports = router
