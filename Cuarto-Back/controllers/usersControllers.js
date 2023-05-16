@@ -6,11 +6,19 @@ const getUsers = async (req, res) => {
 
     //TRAER MUCHOS RESUTLADOS
     try {
-        const users = await User.find();
+        const {id} = req.params;
+        if(id) {
+            const user = await User.findById(id)
+            res.status(200).json({user})
+        }else{
+            const users = await User.find()
+            res.status(200).json({users})
+        }
+
+        // const users = await User.find();
     //TRAE UN RESULTADO
     //TRAR POR SU ID User.find(ID)
     //TRAE SEGUN LA CONDICION User.find({})
-        res.status(200).json({users})
     } catch (error) {
         res.status(error.code || 500).json({message:error.message})
     }
