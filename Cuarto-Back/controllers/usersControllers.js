@@ -73,10 +73,22 @@ const deleteUser = async (req,res) => {
     }
 }
 
+const editUser = async (req,res) => {
+    try {
+        const {email, fields} = req.body
+        const userToModify = await User.findOneAndUpdate({email : email},fields, {new:true})
+        res.status(200).json({message: "El usuario se actualizo correctamente", userToModify})
+    } catch (error) {
+        res.status(error.code<600? error.code : 500).json({message:error.message})
+    }
+}
+
 
 module.exports = {
     getUsers,
     addUser,
     getOlderMen,
-    deleteUser
+    deleteUser,
+    editUser
+
 }
