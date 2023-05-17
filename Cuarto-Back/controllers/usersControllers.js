@@ -62,6 +62,8 @@ const addUser = async (req,res) => {
     }
 }
 
+// Borrado
+
 const deleteUser = async (req,res) => {
     try {
         const {id} = req.body;
@@ -72,6 +74,8 @@ const deleteUser = async (req,res) => {
         res.status(error.code<600? error.code : 500).json({message:error.message})
     }
 }
+
+// Edicion
 
 const editUser = async (req,res) => {
     try {
