@@ -1,4 +1,4 @@
-const {Schema, model} = require ("momgoose")
+const {Schema, model} = require ("mongoose")
 
 const UserShema = new Schema ({
     name: {
@@ -30,15 +30,14 @@ const UserShema = new Schema ({
     admin:{
         type:Boolean,
         default: false
+},
 
+    hobbies: Array
     },
-
-    hobbies: {
-        type: Array,
-        default: []
-    },
+    {
         timestamps: true,
         versionKey: false,
-})
+    }
+    )
 
-module.exports = model("User", UserShema)
+module.exports = model("Userss", UserShema)

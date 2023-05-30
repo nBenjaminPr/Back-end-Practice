@@ -10,7 +10,7 @@ connectDB();
 
 const PORT = process.env.PORT
 
-
+app.use("/users", userRouts)
 
 app.listen(PORT, () => {
     console.log(`Server listening on PORT ${PORT}`)})
