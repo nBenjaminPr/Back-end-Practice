@@ -3,7 +3,10 @@ const dotenv = require("dotenv")
 require("dotenv").config()
 const app = expres();
 
-const userRouts = require("./routes/userRoutes")
+const userRouts = require("./routes/userRoutes");
+const connectDB = require("./config/db");
+
+connectDB();
 
 const PORT = process.env.PORT
 
