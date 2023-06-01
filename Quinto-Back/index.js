@@ -1,10 +1,9 @@
 const expres = require("express")
-const dotenv = require("dotenv")
-require("dotenv").config()
+const connectDB = require("./config/db");
 const app = expres();
+require("dotenv").config()
 
 const userRouts = require("./routes/userRoutes");
-const connectDB = require("./config/db");
 
 connectDB();
 

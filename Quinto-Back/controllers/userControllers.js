@@ -5,11 +5,13 @@ const getUsers = async (req, res) => {
         try {
                 const {gender} = req.query
                 let users;
-                if(!gender){
-                        users = await User.find()
-                }else{
-                        users = await User.find({gender})
-                }
+                // if(!gender){
+                //         users = await User.find()
+                // }else{
+                //         users = await User.find({gender})
+                // }
+                users = await User.find({gender})
+
                 // throw new CustomError ("this is a text", 502)
                 res.status(200).json(users);
         } catch (error) {
