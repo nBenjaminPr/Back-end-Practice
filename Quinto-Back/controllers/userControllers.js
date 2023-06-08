@@ -5,12 +5,18 @@ const getUsers = async (req, res) => {
         try {
                 const {gender} = req.query
                 let users;
-                // if(!gender){
-                //         users = await User.find()
-                // }else{
-                //         users = await User.find({gender})
-                // }
-                users = await User.find({gender})
+                let count;
+        if (!gender) {
+      // users = await User.find({ age: { $gte: 18 } });
+                [users, count] = await Promise.all([
+        User.find().skip(page).limit(2).populate("country"),
+        User.countDocuments(),
+        ]);
+      // users = await User.find().skip(page).limit(2);
+      // count = await User.countDocuments();
+        } else {
+                users = await User.find({ gender });
+        }
 
                 // throw new CustomError ("this is a text", 502)
                 res.status(200).json(users);
