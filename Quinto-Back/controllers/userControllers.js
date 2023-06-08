@@ -3,7 +3,8 @@ const CustomError = require("../utils/customError");
 
 const getUsers = async (req, res) => {
         try {
-                const {gender} = req.query
+                const { gender, pageNumber } = req.query;
+    const page = (pageNumber - 1) * 2;
                 let users;
                 let count;
         if (!gender) {
