@@ -1,43 +1,55 @@
-const {Schema, model} = require ("mongoose")
+const { Schema, model } = require("mongoose");
 
-const UserShema = new Schema ({
+const UserSchema = new Schema(
+    {
     name: {
         type: String,
-        required: [true, "El nombre es requerido" ],
+        required: [true, "El nombre es requerido"],
+        default: "Usuario sin nombre",
+        uppercase: true,
         trim: true,
-        minlength: 3,
-        maxlength: 20,
-        match: /^[a-zA-Z]+$/,
-        default: "Usuario sin nomrbre",
+        minLength: [2, "Debe tener al menos dos caracteres"],
+        maxLength: [30, "Debe tener como máximo treinta caracteres"],
     },
-
-    email:{
+    email: {
         type: String,
     },
-
-    age:{
+    age: {
         type: Number,
     },
-
-    lastname:{
-        type:String
+    lastname: {
+        type: String,
     },
-
-    gender:{
-        type:String
+    gender: {
+        type: String,
+        enum: ["F", "M", "X"],
     },
-
-    admin:{
-        type:Boolean,
-        default: false
-},
-
-    hobbies: Array
+    admin: {
+        type: Boolean,
+    },
+    country: {
+        type: Schema.Types.ObjectId,
+        ref: "Country",
+    },
+    team: {
+        type: Schema.Types.ObjectId,
+        ref: "Teams",
+    },
+    password: {
+        type: String,
+        trim: true,
+        required: [true, "La contraseña es obligatoria"],
+    },
+    hobbies: Array,
     },
     {
-        timestamps: true,
-        versionKey: false,
+    timestamps: true,
+    versionKey: false,
     }
-    )
+);
+UserSchema.methods.toJSON = function () {
+    const { password, ...user } = this.toObject();
+    return user;
+};
 
-module.exports = model("Userss", UserShema)
+module.exports = model("User", UserSchema);
